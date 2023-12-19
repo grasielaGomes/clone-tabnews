@@ -4,7 +4,8 @@
   "description": "Project created based on Felipe Deschamps course - curso.dev",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
+    "compose": "docker compose -f infra/compose.yaml up -d",
+    "dev": "npm run compose & next dev",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test": "jest",
