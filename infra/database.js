@@ -4,7 +4,7 @@ async function query(queryObj) {
   const client = new Client({
     host: process.env.POSTGRES_HOST,
     user: process.env.POSTGRES_USER,
-    database: process.env.POSTGRES_DATABASE,
+    database: process.env.POSTGRES_DB,
     port: process.env.POSTGRES_PORT,
     password: process.env.POSTGRES_PASSWORD,
   });
