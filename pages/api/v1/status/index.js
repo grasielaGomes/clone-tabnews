@@ -3,15 +3,15 @@ import database from "infra/database";
 async function status(request, response) {
   const updatedAt = new Date().toISOString();
   const queryDatabaseStatus = `
-      SELECT VERSION() as version;
+      SHOW server_version;
       SHOW max_connections;
       SELECT COUNT(*) FROM pg_stat_activity;
     `;
 
   const [resultVersion, resultMaxConnections, resultOpenedConnections] =
     await database.query(queryDatabaseStatus);
-    
-  const pgVersionNumber = resultVersion.rows[0].version.split(" ")[1];
+
+  const pgVersionNumber = resultVersion.rows[0].server_version;
   const maxConenction = resultMaxConnections.rows[0].max_connections;
   const openedConnection = resultOpenedConnections.rows[0].count;
 
