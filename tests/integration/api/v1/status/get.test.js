@@ -13,9 +13,9 @@ describe("Status at localhost/api/v1/status", () => {
 
   test("Should return a valid postgres database version", async () => {
     const { responseBody } = await makeSut();
-    const version = responseBody.database.version
+    const version = responseBody.database.version;
     expect(version).toBeDefined();
-    expect(Number(version)).toBeGreaterThan(15);
+    expect(version).toBeGreaterThan(15);
   });
 
   test("Should return database max connections", async () => {
@@ -29,7 +29,7 @@ describe("Status at localhost/api/v1/status", () => {
     const { responseBody } = await makeSut();
     const openedConnections = responseBody.database.opened_connections;
     expect(openedConnections).toBeDefined();
-    expect(openedConnections).toBeGreaterThanOrEqual(1);
+    expect(openedConnections).toBe(1);
   });
 });
 
